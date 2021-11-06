@@ -56,6 +56,7 @@
                                     outlined
                                     :label="opts.circleLabel"
                                     :value="opts.isCircle"
+                                    :input-value="opts.isCircle"
                                     @change="setIsCircle"
                                 />
                             </v-col>
@@ -67,7 +68,8 @@
                                     outlined
                                     :label="opts.proportionalLabel"
                                     :value="opts.isProportional"
-                                    @change="setIsCircle"
+                                    :input-value="opts.isProportional"
+                                    @change="setIsProportional"
                                 />
                             </v-col>
                         </v-row>
@@ -683,6 +685,7 @@ export default {
       val && this.opts.isCircle && (this.opts.isCircle = false)
       this.opts.isProportional = !!val
 
+      this.opts.aspectRatio = val
       this.updateCropperCord()
     },
     setIsProportional(val) {
@@ -693,7 +696,7 @@ export default {
       } else if (!val) {
         this.opts.aspectRatio = undefined
       }
-
+      this.opts.isProportional = val
       this.updateCropperCord()
     },
     updateCropperCord() {
