@@ -4,29 +4,7 @@
   "description": "An image cropper and uploader component for VueJS and Vuetify",
   "author": "Nikita Kolyada <nikita.nk16@yandex.ru> (https://foma-blog.ru)",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mrsky1001/x-cropper/issues"
-  },
-  "homepage": "https://github.com/mrsky1001/x-cropper#readme",
-  "private": true,
-  "keywords": [
-    "Vue",
-    "Vue.js",
-    "vuejs",
-    "image",
-    "crop",
-    "cropper",
-    "uploader",
-    "image cropper",
-    "crop image",
-    "image uploader",
-    "cropping",
-    "circular cropping",
-    "circle crop",
-    "avatar cropping"
-  ],
-  "main": "./dist/XCropper.umd.min.js",
-  "unpkg": "./dist/XCropper.umd.min.js",
+
   "scripts": {
     "serve": "yarn kill-front; vue-cli-service serve --watch ",
     "build-demo": "vue-cli-service build --dest docs",
@@ -60,5 +38,37 @@
     "node-sass": "^4.12.0",
     "prettier": "^2.2.1",
     "sass-loader": "^8.0.2"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/mrsky1001/x-cropper/issues"
+  },
+  "homepage": "https://github.com/mrsky1001/x-cropper#readme",
+  "private": true,
+  "keywords": [
+    "Vue",
+    "Vue.js",
+    "vuejs",
+    "image",
+    "crop",
+    "cropper",
+    "uploader",
+    "image cropper",
+    "crop image",
+    "image uploader",
+    "cropping",
+    "circular cropping",
+    "circle crop",
+    "avatar cropping"
+  ],
+  "main": "./dist/XCropper.umd.min.js",
+  "unpkg": "./dist/XCropper.umd.min.js",
+  "files": [
+    "dist/XCropper.common.js",
+    "dist/XCropper.common.js.map",
+    "dist/XCropper.css",
+    "dist/XCropper.umd.js",
+    "dist/XCropper.umd.js.map",
+    "dist/XCropper.umd.min.js",
+    "dist/XCropper.umd.min.js.map"
+  ]
 }
