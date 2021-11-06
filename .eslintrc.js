@@ -64,6 +64,7 @@ module.exports = {
             "warn",
             "always"
         ],
+        "vue/no-mutating-props": "off",
         "no-console": "off",
 
         "prettier/prettier": [
