@@ -311,7 +311,7 @@ export default {
                     handleStrokeColor: 'rgba(255, 255, 255, 0.8)',
                     overlayFill: 'rgba(0, 0, 0, 0.5)',
 
-                    // classes
+                    // style classes
                     cropperClasses: '',
                     toolbarClasses: '',
                     cropAreaClasses: '',

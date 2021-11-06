@@ -1,4 +1,5 @@
-# x-cropper
+![x-cropper](assets/x-cropper-logo-64.png)
+# XCropper
 
 An image cropper and uploader component for VueJS with Vuetify
 

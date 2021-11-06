@@ -1,6 +1,6 @@
 {
   "name": "x-cropper",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An image cropper and uploader component for VueJS and Vuetify",
   "author": "Nikita Kolyada <nikita.nk16@yandex.ru> (https://foma-blog.ru)",
   "license": "ISC",
