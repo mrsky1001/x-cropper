@@ -13,7 +13,7 @@ module.exports = {
         "@vue/prettier",
     ],
     parserOptions: {
-        ecmaVersion: 2020
+        ecmaVersion: 2018
     },
     "plugins": [  "prettier"],
     "rules": {
