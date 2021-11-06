@@ -4,13 +4,12 @@
   "description": "An image cropper and uploader component for VueJS and Vuetify",
   "author": "Nikita Kolyada <nikita.nk16@yandex.ru> (https://foma-blog.ru)",
   "license": "ISC",
-
   "scripts": {
     "serve": "yarn kill-front; vue-cli-service serve --watch ",
     "build-demo": "vue-cli-service build --dest docs",
     "lint": "vue-cli-service lint",
     "build": "vue-cli-service build --target lib --name XCropper ./src/components/XCropper/XCropper.vue",
-    "fix": "eslint src/**/*.{vue,ts} --fix",
+    "fix": "eslint src/**/*.* --fix",
     "kill-front": "kill -9 `lsof -t -i tcp:8080`"
   },
   "repository": {
@@ -18,26 +17,31 @@
     "url": "git+https://github.com/mrsky1001/x-cropper.git"
   },
   "dependencies": {
+    "@mdi/font": "^5.9.55",
     "axios": "^0.21.1",
     "vue": "^2.6.11",
     "vuetify": "^2.5.9"
   },
   "devDependencies": {
-    "@mdi/font": "^5.9.55",
-    "@typescript-eslint/eslint-plugin": "^4.18.0",
-    "@typescript-eslint/parser": "^5.3.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-transform-regenerator": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-preset-vue": "^2.0.2",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-prettier": "^6.0.0",
-    "@vue/eslint-config-typescript": "^7.0.0",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.14",
     "node-sass": "^4.12.0",
     "prettier": "^2.2.1",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.14"
   },
   "bugs": {
     "url": "https://github.com/mrsky1001/x-cropper/issues"

@@ -8,7 +8,7 @@
         <div v-if="!file" class="cropper-droparea" @drop.prevent="dropFile" @dragover.prevent>
             <i>{{ opts.dropareaLabel }}</i>
             <v-btn color="primary" @click="triggerInput">
-                <v-icon class="mr-1">mdi-image-plus</v-icon>
+                <v-icon class="mr-1"> mdi-image-plus </v-icon>
                 {{ opts.selectBtnLabel }}
             </v-btn>
         </div>
@@ -34,16 +34,16 @@
                         <v-icon>mdi-close-thick</v-icon>
                     </v-btn>
                 </div>
-                <v-spacer></v-spacer>
+                <v-spacer />
                 <v-btn color="primary" class="float-end" @click="doCrop">
-                    <v-icon class="mr-1">mdi-content-save-outline</v-icon>
+                    <v-icon class="mr-1"> mdi-content-save-outline </v-icon>
                     {{ opts.saveLabel }}
                 </v-btn>
             </v-toolbar>
 
             <div v-if="opts.isShowFormParams" :class="'cropper-form-params ' + opts.formParamsClasses">
                 <v-card class="cropper-form-toolbar">
-                    <v-divider></v-divider>
+                    <v-divider />
                     <div>
                         <v-row>
                             <v-col sm="5">
@@ -54,7 +54,7 @@
                                     outlined
                                     :label="opts.circleLabel"
                                     v-model="opts.isCircle"
-                                ></v-checkbox>
+                                />
                             </v-col>
                             <v-col sm="5">
                                 <v-checkbox
@@ -64,7 +64,7 @@
                                     outlined
                                     :label="opts.proportionalLabel"
                                     v-model="opts.isProportional"
-                                ></v-checkbox>
+                                />
                             </v-col>
                         </v-row>
                         <v-row>
@@ -78,7 +78,7 @@
                                     v-model="opts.aspectRatio"
                                     :items="listAspectRatio"
                                     :label="opts.aspectRatioLabel"
-                                ></v-select>
+                                />
                             </v-col>
                         </v-row>
                         <v-row>
@@ -95,14 +95,14 @@
                                     :label="opts.qualityLabel"
                                     v-model="opts.quality"
                                     @change="moveMouse()"
-                                ></v-text-field>
+                                />
                                 <v-slider
                                     hide-details
                                     step="0.01"
                                     :max="1"
                                     v-model="opts.quality"
                                     @change="moveMouse()"
-                                ></v-slider>
+                                />
                             </v-col>
                         </v-row>
                         <v-expansion-panels>
@@ -124,13 +124,13 @@
                                                 :label="opts.cropAreaWidthLabel"
                                                 v-model="opts.cropArea.width"
                                                 @change="updateCropperCord"
-                                            ></v-text-field>
+                                            />
                                             <v-slider
                                                 v-model="opts.cropArea.width"
                                                 hide-details
                                                 :max="maxCropAreaWidth"
                                                 @change="updateCropperCord"
-                                            ></v-slider>
+                                            />
                                         </v-col>
                                     </v-row>
                                     <v-row>
@@ -146,14 +146,14 @@
                                                 v-model="opts.cropArea.height"
                                                 :disabled="opts.isProportional"
                                                 @change="updateCropperCord"
-                                            ></v-text-field>
+                                            />
                                             <v-slider
                                                 v-model="opts.cropArea.height"
                                                 hide-details
                                                 :max="maxCropAreaHeight"
                                                 :disabled="opts.isProportional"
                                                 @input="updateCropperCord"
-                                            ></v-slider>
+                                            />
                                         </v-col>
                                     </v-row>
                                     <v-row>
@@ -168,13 +168,13 @@
                                                 :label="opts.cropAreaXCoordLabel"
                                                 v-model="opts.cropArea.x"
                                                 @change="updateCropperCord"
-                                            ></v-text-field>
+                                            />
                                             <v-slider
                                                 v-model="opts.cropArea.x"
                                                 hide-details
                                                 :max="maxCropAreaWidth"
                                                 @change="updateCropperCord"
-                                            ></v-slider>
+                                            />
                                         </v-col>
                                     </v-row>
                                     <v-row>
@@ -189,13 +189,13 @@
                                                 :label="opts.cropAreaYCoordLabel"
                                                 v-model="opts.cropArea.y"
                                                 @change="updateCropperCord"
-                                            ></v-text-field>
+                                            />
                                             <v-slider
                                                 v-model="opts.cropArea.y"
                                                 hide-details
                                                 :max="maxCropAreaHeight"
                                                 @input="updateCropperCord"
-                                            ></v-slider>
+                                            />
                                         </v-col>
                                     </v-row>
                                 </v-expansion-panel-content>
@@ -204,7 +204,7 @@
                         <v-row>
                             <v-col sm="5">
                                 <v-btn color="primary" hide-details dense @click="doubleClickCropper">
-                                    <v-icon class="mr-1">mdi-crop-free</v-icon>
+                                    <v-icon class="mr-1"> mdi-crop-free </v-icon>
                                     {{ opts.fillCropAreaLabel }}
                                 </v-btn>
                             </v-col>
@@ -213,7 +213,9 @@
                 </v-card>
                 <div :class="'crop-area ' + opts.cropAreaClasses">
                     <v-card class="cropper-preview-card">
-                        <v-card-title style="place-content: center">{{ opts.cropAreaLabel }}</v-card-title>
+                        <v-card-title style="place-content: center">
+                            {{ opts.cropAreaLabel }}
+                        </v-card-title>
                         <div
                             :style="{ width: maxCropAreaWidth + 'px', height: maxCropAreaHeight + 'px' }"
                             @dblclick="doubleClickCropper"
@@ -227,11 +229,13 @@
                                 @mousedown="startDrag"
                                 @mouseup="stopDrag"
                                 @mouseleave="isDragged = false"
-                            ></canvas>
+                            />
                         </div>
                     </v-card>
                     <v-card class="cropper-preview-card">
-                        <v-card-title style="place-content: center">{{ opts.previewLabel }}</v-card-title>
+                        <v-card-title style="place-content: center">
+                            {{ opts.previewLabel }}
+                        </v-card-title>
                         <div
                             v-if="opts.isShowPreview"
                             class="cropper-previewArea"
@@ -995,7 +999,6 @@ export default {
                 if (!this.opts.aspectRatio) {
                     this.opts.cropArea.width = Math.round(this.canvasWidth)
                     this.opts.cropArea.height = Math.round(this.canvasHeight)
-                    this.opts.aspectRatio = this.imageRatio
                 } else if (this.opts.aspectRatio >= this.imageRatio) {
                     this.opts.cropArea.width = Math.round(this.canvasWidth)
                     this.opts.cropArea.height = Math.round(this.opts.cropArea.width / this.opts.aspectRatio)
@@ -1061,6 +1064,7 @@ export default {
             let ny = this.opts.cropArea.y
             let nw = this.opts.cropArea.width
             let nh = this.opts.cropArea.height
+
             const ar = this.opts.aspectRatio
 
             switch (this.isDragged) {
@@ -1190,8 +1194,18 @@ export default {
         }
     },
     watch: {
-        isProportional(val) {
-            this.aspectRatio = val ? this.aspectRatio : undefined
+        'opts.aspectRatio'(val) {
+          this.opts.isProportional = !!val
+          this.updateCropperCord()
+        },
+      'opts.isProportional'(val) {
+          if (val && !this.opts.aspectRatio) {
+            this.opts.aspectRatio = this.imageRatio
+          } else if(!val) {
+            this.opts.aspectRatio = undefined
+          }
+
+          this.updateCropperCord()
         },
         'opts.cropArea.width'() {
             this.drawCanvas()
