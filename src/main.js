@@ -1,5 +1,5 @@
 /*
- * Copyright (©) 06.11.2021, 16:55. Kolyada Nikita Vladimirovich (nikita.nk16@yandex.ru)
+ * Copyright (©) 06.11.2021, 18:08. Kolyada Nikita Vladimirovich (nikita.nk16@yandex.ru)
  */
 
 import Vue from 'vue'

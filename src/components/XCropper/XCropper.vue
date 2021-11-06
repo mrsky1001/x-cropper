@@ -1,3 +1,7 @@
+<!--
+  - Copyright (©) 06.11.2021, 18:08. Kolyada Nikita Vladimirovich (nikita.nk16@yandex.ru)
+  -->
+
 <template>
     <div :class="'cropper ' + opts.cropperClasses">
         <input type="file" class="cropper-fileInput" ref="fileInput" v-show="false" @change="selectFile" />
