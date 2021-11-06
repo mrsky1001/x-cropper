@@ -1407,26 +1407,30 @@ export default {
 }
 
 @media screen and (max-width: 1000px) {
-    .cropper-card {
-        .crop-area {
-            .cropper-preview-card {
-                margin: 0 !important;
-            }
+    .cropper {
+        .cropper-card {
+            .crop-area {
+                .cropper-preview-card {
+                    margin: 0 !important;
+                }
 
-            width: 100% !important;
+                width: 100% !important;
+            }
         }
-    }
-    .cropper-form-params {
-        .cropper-form-toolbar {
-            width: 100% !important;
+        .cropper-form-params {
+            .cropper-form-toolbar {
+                width: 100% !important;
+            }
         }
     }
 }
 
 @media screen and (max-width: 1300px) {
-    .cropper-card {
-        .crop-area {
-            flex-direction: column;
+    .cropper {
+        .cropper-card {
+            .crop-area {
+                flex-direction: column;
+            }
         }
     }
 }
