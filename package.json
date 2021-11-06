@@ -1,12 +1,43 @@
 {
   "name": "x-cropper",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "An image cropper and uploader component for VueJS and Vuetify",
+  "author": "Nikita Kolyada <nikita.nk16@yandex.ru> (https://foma-blog.ru)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrsky1001/x-cropper/issues"
+  },
+  "homepage": "https://github.com/mrsky1001/x-cropper#readme",
   "private": true,
+  "keywords": [
+    "Vue",
+    "Vue.js",
+    "vuejs",
+    "image",
+    "crop",
+    "cropper",
+    "uploader",
+    "image cropper",
+    "crop image",
+    "image uploader",
+    "cropping",
+    "circular cropping",
+    "circle crop",
+    "avatar cropping"
+  ],
+  "main": "./dist/XCropper.umd.min.js",
+  "unpkg": "./dist/XCropper.umd.min.js",
   "scripts": {
     "serve": "yarn kill-front; vue-cli-service serve --watch ",
-    "build": "vue-cli-service build",
+    "build-demo": "vue-cli-service build --dest docs",
+    "lint": "vue-cli-service lint",
+    "build": "vue-cli-service build --target lib --name XCropper ./src/components/XCropper/XCropper.vue",
     "fix": "eslint src/**/*.{vue,ts} --fix",
     "kill-front": "kill -9 `lsof -t -i tcp:8080`"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrsky1001/x-cropper.git"
   },
   "dependencies": {
     "axios": "^0.21.1",

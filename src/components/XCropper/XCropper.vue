@@ -1253,156 +1253,157 @@ export default {
     .row {
         margin: 0;
     }
-}
-.v-expansion-panel-header {
-    padding: 0 !important;
 
-    &:hover {
+    .v-expansion-panel-header {
+        padding: 0 !important;
+
+        &:hover {
+            background: #eeeeee;
+        }
+    }
+
+    .v-expansion-panel-header--active {
         background: #eeeeee;
     }
-}
 
-.v-expansion-panel-header--active {
-    background: #eeeeee;
-}
+    .cropper-form-toolbar {
+        border-radius: 0 !important;
+        box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.2), 0 5px 24px 0 rgba(0, 0, 0, 0.14), 0 rgba(0, 0, 0, 0.12) !important;
+    }
 
-.cropper-form-toolbar {
-    border-radius: 0 !important;
-    box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.2), 0 5px 24px 0 rgba(0, 0, 0, 0.14), 0 rgba(0, 0, 0, 0.12) !important;
-}
-
-.cropper-form-params {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.cropper-toolbar {
-    height: unset !important;
-
-    div {
-        height: unset !important;
+    .cropper-form-params {
         display: flex;
-        flex-wrap: wrap !important;
-        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .cropper-toolbar {
+        height: unset !important;
 
         div {
-            .v-btn {
-                &:hover {
-                    color: #2b81d6 !important;
+            height: unset !important;
+            display: flex;
+            flex-wrap: wrap !important;
+            justify-content: space-around;
+
+            div {
+                .v-btn {
+                    &:hover {
+                        color: #2b81d6 !important;
+                    }
                 }
             }
         }
     }
-}
 
-.cropper-card {
-    background: #ececec;
-    border-radius: 3px;
-    position: relative;
-    overflow: hidden;
-    font-family: Avenir, Helvetica, 'Helvetica Neue', Arial, sans-serif;
-    font-size: 16px;
+    .cropper-card {
+        background: #ececec;
+        border-radius: 3px;
+        position: relative;
+        overflow: hidden;
+        font-family: Avenir, Helvetica, 'Helvetica Neue', Arial, sans-serif;
+        font-size: 16px;
 
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
 
-    a {
-        text-decoration: none;
+        a {
+            text-decoration: none;
+        }
+
+        .crop-area {
+            display: flex;
+            flex-direction: row;
+
+            .cropper-preview-card {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+
+            > * {
+                margin: 20px;
+            }
+        }
     }
 
-    .crop-area {
+    .cropper-droparea {
         display: flex;
-        flex-direction: row;
-
-        .cropper-preview-card {
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            align-items: center;
-        }
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        border: dashed 2px #367bb7;
+        text-align: center;
+        margin: 2em;
+        padding: 2em;
 
         > * {
-            margin: 20px;
+            margin: 5px;
         }
     }
-}
 
-.cropper-droparea {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    border: dashed 2px #367bb7;
-    text-align: center;
-    margin: 2em;
-    padding: 2em;
-
-    > * {
-        margin: 5px;
+    .cropper-selectButton {
+        min-width: 50px;
+        min-height: 30px;
+        padding: 5px 20px;
+        background: #334f90;
+        color: #fff;
+        border: none;
+        margin: 10px;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: all 0.3s;
     }
-}
 
-.cropper-selectButton {
-    min-width: 50px;
-    min-height: 30px;
-    padding: 5px 20px;
-    background: #334f90;
-    color: #fff;
-    border: none;
-    margin: 10px;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.cropper-navigation {
-    padding: 12px;
-    border-radius: 3px;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
-}
-
-.cropper-navButton {
-    min-width: 30px;
-    min-height: 30px;
-    padding: 5px 8px;
-    background: white;
-    border-radius: 3px;
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin-right: 10px;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.15), 1px 1px 2px rgba(0, 0, 0, 0.25);
-}
-
-.cropper-saveButton {
-    min-width: 50px;
-    min-height: 30px;
-    padding: 4px 15px;
-    border-radius: 3px;
-    float: right;
-    display: inline-block;
-    height: 16px;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.15), 1px 1px 2px rgba(0, 0, 0, 0.25);
-    font-size: 14px;
-
-    svg {
-        vertical-align: bottom;
+    .cropper-navigation {
+        padding: 12px;
+        border-radius: 3px;
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
     }
-}
 
-.cropper-mainArea {
-    margin: 12px;
-    box-sizing: border-box;
-    overflow: hidden;
-    text-align: center;
-}
+    .cropper-navButton {
+        min-width: 30px;
+        min-height: 30px;
+        padding: 5px 8px;
+        background: white;
+        border-radius: 3px;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 10px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.15), 1px 1px 2px rgba(0, 0, 0, 0.25);
+    }
 
-.cropper-previewArea {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .cropper-saveButton {
+        min-width: 50px;
+        min-height: 30px;
+        padding: 4px 15px;
+        border-radius: 3px;
+        float: right;
+        display: inline-block;
+        height: 16px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.15), 1px 1px 2px rgba(0, 0, 0, 0.25);
+        font-size: 14px;
+
+        svg {
+            vertical-align: bottom;
+        }
+    }
+
+    .cropper-mainArea {
+        margin: 12px;
+        box-sizing: border-box;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .cropper-previewArea {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 @media screen and (max-width: 1000px) {
