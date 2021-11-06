@@ -7,4 +7,4 @@ ____
 ###NPM
 
 
-![x-cropper](x-cropper.png)
+![x-cropper](assets/x-cropper.png)
