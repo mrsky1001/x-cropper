@@ -43,7 +43,7 @@
     "url": "https://github.com/mrsky1001/x-cropper/issues"
   },
   "homepage": "https://github.com/mrsky1001/x-cropper#readme",
-  "private": true,
+  "private": false,
   "keywords": [
     "Vue",
     "Vue.js",
