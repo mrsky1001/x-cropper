@@ -43,8 +43,8 @@
                 </v-btn>
             </v-toolbar>
 
-            <div v-if="opts.isShowFormParams" :class="'cropper-form-params ' + opts.formParamsClasses">
-                <v-card class="cropper-form-toolbar">
+            <div :class="'cropper-form-params ' + opts.formParamsClasses">
+                <v-card v-if="opts.isShowFormParams" class="cropper-form-toolbar">
                     <v-divider />
                     <div>
                         <v-row>

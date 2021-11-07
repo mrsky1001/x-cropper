@@ -4,23 +4,61 @@
 
 <template>
     <v-app>
-        <v-navigation-drawer
-            app
-            v-model="drawer"
-            :style="{
-                margin: '20px 0 0 0',
-                display: 'flex',
-                flexWrap: 'wrap',
-                flexDirection: 'column',
-                justifyContent: 'space-around',
-                alignContent: 'center',
-            }"
-        >
-            <a href="https://www.foma-blog.ru" target="_blank">
-                <v-img max-width="100px" :src="logo" title="www.foma-blog.ru" alt="www.foma-blog.ru" />
-            </a>
-            <v-row>
+        <v-navigation-drawer app v-model="drawer">
+            <div
+                :style="{
+                    margin: '20px 0 0 0',
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    flexDirection: 'column',
+                    justifyContent: 'space-around',
+                    alignContent: 'center',
+                }"
+            >
+                <a href="https://www.foma-blog.ru" target="_blank">
+                    <v-img
+                        style="opacity: 0.7"
+                        max-width="100px"
+                        :src="logo"
+                        title="www.foma-blog.ru"
+                        alt="www.foma-blog.ru"
+                    />
+                </a>
+            </div>
+            <v-row style="margin: 20px 0 0 0">
                 <v-col>
+                    <v-checkbox
+                        required
+                        dense
+                        hide-details
+                        outlined
+                        label="isShowToolbar"
+                        v-model="options.isShowToolbar"
+                    />
+                    <v-checkbox
+                        required
+                        dense
+                        hide-details
+                        outlined
+                        label="isShowFormParams"
+                        v-model="options.isShowFormParams"
+                    />
+                    <v-checkbox
+                        required
+                        dense
+                        hide-details
+                        outlined
+                        label="isShowExpansionPnl"
+                        v-model="options.isShowExpansionPnl"
+                    />
+                    <v-checkbox
+                        required
+                        dense
+                        hide-details
+                        outlined
+                        label="isShowSaveBtn"
+                        v-model="options.isShowSaveBtn"
+                    />
                     <v-checkbox
                         hide-details
                         required
@@ -29,6 +67,7 @@
                         label="isShowCircleChk"
                         v-model="options.isShowCircleChk"
                     />
+
                     <v-checkbox
                         required
                         dense
@@ -36,6 +75,71 @@
                         outlined
                         label="isShowProportionalChk"
                         v-model="options.isShowProportionalChk"
+                    />
+                    <v-checkbox
+                        required
+                        dense
+                        hide-details
+                        outlined
+                        label="isShowAspectRatioFld"
+                        v-model="options.isShowAspectRatioFld"
+                    />
+                    <v-checkbox
+                        required
+                        dense
+                        hide-details
+                        outlined
+                        label="isShowQualityFld"
+                        v-model="options.isShowQualityFld"
+                    /><v-checkbox
+                        required
+                        dense
+                        hide-details
+                        outlined
+                        label="isShowFullAreaBtn"
+                        v-model="options.isShowFullAreaBtn"
+                    /><v-checkbox
+                        required
+                        dense
+                        hide-details
+                        outlined
+                        label="isShowSelectImgBtn"
+                        v-model="options.isShowSelectImgBtn"
+                    /><v-checkbox
+                        required
+                        dense
+                        hide-details
+                        outlined
+                        label="isShowRotateLeftBtn"
+                        v-model="options.isShowRotateLeftBtn"
+                    /><v-checkbox
+                        required
+                        dense
+                        hide-details
+                        outlined
+                        label="isShowRotateRightBtn"
+                        v-model="options.isShowRotateRightBtn"
+                    /><v-checkbox
+                        required
+                        dense
+                        hide-details
+                        outlined
+                        label="isShowFlipHorizBtn"
+                        v-model="options.isShowFlipHorizBtn"
+                    /><v-checkbox
+                        required
+                        dense
+                        hide-details
+                        outlined
+                        label="isShowFlipVertBtn"
+                        v-model="options.isShowFlipVertBtn"
+                    /><v-checkbox
+                        required
+                        dense
+                        hide-details
+                        outlined
+                        label="isShowClearBtn"
+                        v-model="options.isShowClearBtn"
                     />
                 </v-col>
             </v-row>
