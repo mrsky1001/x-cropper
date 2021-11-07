@@ -319,7 +319,7 @@ export default {
           maxCropAreaHeight: 0,
           frameLineDash: [5, 3],
           handleSize: 10,
-          quality: 0.65,
+          quality: 0.85,
 
           // colors
           frameStrokeColor: 'rgba(255, 255, 255, 0.8)',
