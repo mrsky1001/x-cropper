@@ -398,7 +398,6 @@ export default {
         return this.maxCropAreaWidth
       }
 
-
       return Math.round(this.imageRatio * this.canvasHeight)
     },
     cropData() {
@@ -972,7 +971,7 @@ export default {
 
       this.drawCanvas()
     },
-    rotate: (delta) => {
+    rotate(delta) {
       const canvasSize = [this.canvasWidth, this.canvasHeight]
 
       if (this.fliph ? !this.flipv : this.flipv) {
