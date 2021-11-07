@@ -8,37 +8,37 @@
         <div v-if="!file" class="cropper-droparea" @drop.prevent="dropFile" @dragover.prevent>
             <i>{{ opts.dropareaLabel }}</i>
             <v-btn color="primary" @click="triggerInput">
-                <v-icon class="mr-1"> mdi-image-plus </v-icon>
+                <v-icon class="mr-1"> mdi-image-plus</v-icon>
                 {{ opts.selectBtnLabel }}
             </v-btn>
         </div>
         <div v-if="file" class="cropper-card">
             <v-toolbar :class="'cropper-toolbar ' + opts.toolbarClasses">
                 <div v-if="opts.isShowToolbar">
-                    <v-btn icon :title="opts.selectBtnLabel" @click="triggerInput">
+                    <v-btn v-if="opts.isShowSelectImgBtn" icon :title="opts.selectBtnLabel" @click="triggerInput">
                         <v-icon>mdi-image-plus</v-icon>
                     </v-btn>
-                    <v-btn icon :title="opts.rotateLeftLabel" @click="rotate(-90)">
+                    <v-btn v-if="opts.isShowRotateLeftBtn" icon :title="opts.rotateLeftLabel" @click="rotate(-90)">
                         <v-icon>mdi-restore</v-icon>
                     </v-btn>
-                    <v-btn icon :title="opts.rotateRightLabel" @click="rotate(90)">
+                    <v-btn v-if="opts.isShowRotateRightBtn" icon :title="opts.rotateRightLabel" @click="rotate(90)">
                         <v-icon>mdi-reload</v-icon>
                     </v-btn>
-                    <v-btn icon :title="opts.flipHorizontalLabel" @click="flip('h')">
+                    <v-btn v-if="opts.isShowFlipHorizBtn" icon :title="opts.flipHorizontalLabel" @click="flip('h')">
                         <v-icon>mdi-axis-z-rotate-counterclockwise</v-icon>
                     </v-btn>
-                    <v-btn icon :title="opts.flipVerticalLabel" @click="flip('v')">
+                    <v-btn v-if="opts.isShowFlipVertBtn" icon :title="opts.flipVerticalLabel" @click="flip('v')">
                         <v-icon>mdi-horizontal-rotate-counterclockwise</v-icon>
                     </v-btn>
 
-                    <v-btn icon :title="opts.clearLabel" @click="cancelCrop">
+                    <v-btn v-if="opts.isShowClearBtn" icon :title="opts.clearLabel" @click="cancelCrop">
                         <v-icon>mdi-close-thick</v-icon>
                     </v-btn>
                 </div>
                 <v-spacer />
 
-                <v-btn color="primary" class="float-end" @click="doCrop">
-                    <v-icon class="mr-1"> mdi-content-save-outline </v-icon>
+                <v-btn v-if="opts.isShowSaveBtn" color="primary" class="float-end" @click="doCrop">
+                    <v-icon class="mr-1"> mdi-content-save-outline</v-icon>
                     {{ opts.saveLabel }}
                 </v-btn>
             </v-toolbar>
@@ -48,7 +48,7 @@
                     <v-divider />
                     <div>
                         <v-row>
-                            <v-col sm="5">
+                            <v-col v-if="opts.isShowCircleChk" sm="5">
                                 <v-checkbox
                                     hide-details
                                     required
@@ -60,7 +60,7 @@
                                     @change="setIsCircle"
                                 />
                             </v-col>
-                            <v-col sm="5">
+                            <v-col v-if="opts.isShowProportionalChk" sm="5">
                                 <v-checkbox
                                     required
                                     dense
@@ -73,7 +73,7 @@
                                 />
                             </v-col>
                         </v-row>
-                        <v-row>
+                        <v-row v-if="opts.isShowAspectRatioFld">
                             <v-col>
                                 <v-select
                                     dense
@@ -88,7 +88,7 @@
                                 />
                             </v-col>
                         </v-row>
-                        <v-row>
+                        <v-row v-if="opts.isShowQualityFld">
                             <v-col>
                                 <v-text-field
                                     type="number"
@@ -112,7 +112,7 @@
                                 />
                             </v-col>
                         </v-row>
-                        <v-expansion-panels>
+                        <v-expansion-panels v-if="opts.isShowExpansionPnl">
                             <v-expansion-panel>
                                 <v-expansion-panel-header>
                                     <v-icon>mdi-format-list-checks</v-icon>
@@ -208,11 +208,11 @@
                                 </v-expansion-panel-content>
                             </v-expansion-panel>
                         </v-expansion-panels>
-                        <v-row>
+                        <v-row v-if="opts.isShowFullAreaBtn">
                             <v-col sm="5">
                                 <v-btn color="primary" hide-details dense @click="doubleClickCropper">
-                                    <v-icon class="mr-1"> mdi-crop-free </v-icon>
-                                    {{ opts.fillCropAreaLabel }}
+                                    <v-icon class="mr-1"> mdi-crop-free</v-icon>
+                                    {{ opts.fullCropAreaLabel }}
                                 </v-btn>
                             </v-col>
                         </v-row>
@@ -225,7 +225,7 @@
                         </v-card-title>
                         <div
                             :style="{
-                                width: maxCropAreaWidth + 'px',
+                                width: 'auto',
                                 height: maxCropAreaHeight + 'px',
                             }"
                             @dblclick="doubleClickCropper"
@@ -242,12 +242,11 @@
                             />
                         </div>
                     </v-card>
-                    <v-card class="cropper-preview-card">
+                    <v-card v-if="opts.isShowPreview" class="cropper-preview-card">
                         <v-card-title style="place-content: center">
                             {{ opts.previewLabel }}
                         </v-card-title>
                         <div
-                            v-if="opts.isShowPreview"
                             class="cropper-previewArea"
                             :style="{
                                 width: prevDivWidth + 'px',
@@ -275,89 +274,8 @@ import axios from 'axios'
 export default {
   name: 'XCropper',
   props: {
-    opts: {
-      type: Object,
-      default() {
-        return {
-          // system
-          inputMimeTypes: ['image/jpeg', 'image/png', 'image/gif'],
-          resultMimeType: 'image/jpeg',
-          maxFileSize: 8000000, // 8MB
-          layoutBreakpoint: 850,
-          maxCropperHeight: 600,
-          croppedAreaHeight: 400,
-          croppedAreaWidth: 400,
-          maxCroppedAreaWidth: 400,
-          uploadData: {},
-
-          isUploadTo: false,
-          isPreviewOnDrag: true,
-          isShowPreview: true,
-          isShowToolbar: true,
-          isShowFormParams: true,
-          isCloseOnSave: true,
-
-          cropArea: {
-            minWidth: 8,
-            minHeight: 8,
-
-            // user changeable fields
-            width: 0,
-            height: 0,
-            x: 20,
-            y: 20,
-          },
-
-          // user changeable checks
-          isProportional: false,
-          isCircle: true,
-
-
-          // user changeable fields
-          aspectRatio: 1,
-          rotation: 0,
-          maxCropAreaHeight: 0,
-          frameLineDash: [5, 3],
-          handleSize: 10,
-          quality: 0.85,
-
-          // colors
-          frameStrokeColor: 'rgba(255, 255, 255, 0.8)',
-          handleFillColor: 'rgba(255, 255, 255, 0.2)',
-          handleHoverFillColor: 'rgba(255, 255, 255, 0.4)',
-          handleHoverStrokeColor: 'rgba(255, 255, 255, 1)',
-          handleStrokeColor: 'rgba(255, 255, 255, 0.8)',
-          overlayFill: 'rgba(0, 0, 0, 0.5)',
-
-          // style classes
-          cropperClasses: '',
-          toolbarClasses: '',
-          cropAreaClasses: '',
-          formParamsClasses: '',
-
-          // labels
-          dropareaLabel: 'Select or drop image...',
-          selectBtnLabel: 'Select image',
-          rotateLeftLabel: 'Rotate left',
-          rotateRightLabel: 'Rotate right',
-          flipHorizontalLabel: 'Flip horizontal',
-          flipVerticalLabel: 'Flip vertical',
-          clearLabel: 'Clear',
-          saveLabel: 'Save image',
-          circleLabel: 'Circle',
-          proportionalLabel: 'Proportional',
-          aspectRatioLabel: 'Aspect ratio',
-          previewLabel: 'Preview',
-          cropAreaLabel: 'Cropper area',
-          cropParamsLabel: 'Cropper params',
-          cropAreaWidthLabel: 'Width',
-          cropAreaHeightLabel: 'Height',
-          cropAreaXCoordLabel: 'X coordinate',
-          cropAreaYCoordLabel: 'Y coordinate',
-          fillCropAreaLabel: 'Full area',
-          qualityLabel: 'Quality',
-        }
-      }
+    options: {
+      type: Object
     }
   },
   data() {
@@ -382,10 +300,108 @@ export default {
         mx: 0,
         my: 0,
       },
+
+      defaultProps: {     // system
+        inputMimeTypes: ['image/jpeg', 'image/png', 'image/gif'],
+        resultMimeType: 'image/jpeg',
+        maxFileSize: 8000000, // 8MB
+        layoutBreakpoint: 850,
+        maxCropperHeight: 600,
+        croppedAreaHeight: 400,
+        croppedAreaWidth: 400,
+        maxCroppedAreaWidth: 400,
+        uploadData: {},
+
+        isUploadTo: false,
+        isPreviewOnDrag: true,
+        isCloseOnSave: true,
+
+        // show flags
+        isShowPreview: true,
+        isShowToolbar: true,
+        isShowSaveBtn: true,
+        isShowClearBtn: true,
+        isShowCircleChk: true,
+        isShowQualityFld: true,
+        isShowFormParams: true,
+        isShowFullAreaBtn: true,
+        isShowFlipVertBtn: true,
+        isShowFlipHorizBtn: true,
+        isShowSelectImgBtn: true,
+        isShowExpansionPnl: true,
+        isShowRotateLeftBtn: true,
+        isShowAspectRatioFld: true,
+        isShowRotateRightBtn: true,
+        isShowProportionalChk: true,
+
+        cropArea: {
+          minWidth: 8,
+          minHeight: 8,
+
+          // user changeable fields
+          width: 0,
+          height: 0,
+          x: 20,
+          y: 20,
+        },
+
+        // user changeable checks
+        isCircle: true,
+        isProportional: false,
+
+
+        // user changeable fields
+        rotation: 0,
+        quality: 0.85,
+        handleSize: 10,
+        aspectRatio: 1,
+        maxCropAreaHeight: 0,
+        frameLineDash: [5, 3],
+
+        // colors
+        overlayFill: 'rgba(0, 0, 0, 0.5)',
+        handleFillColor: 'rgba(255, 255, 255, 0.2)',
+        frameStrokeColor: 'rgba(255, 255, 255, 0.8)',
+        handleStrokeColor: 'rgba(255, 255, 255, 0.8)',
+        handleHoverFillColor: 'rgba(255, 255, 255, 0.4)',
+        handleHoverStrokeColor: 'rgba(255, 255, 255, 1)',
+
+        // style classes
+        cropperClasses: '',
+        toolbarClasses: '',
+        cropAreaClasses: '',
+        formParamsClasses: '',
+
+        // labels
+
+        clearLabel: 'Clear',
+        circleLabel: 'Circle',
+        previewLabel: 'Preview',
+        qualityLabel: 'Quality',
+        saveLabel: 'Save image',
+        cropAreaWidthLabel: 'Width',
+        cropAreaHeightLabel: 'Height',
+        cropAreaLabel: 'Cropper area',
+        rotateLeftLabel: 'Rotate left',
+        fullCropAreaLabel: 'Full area',
+        selectBtnLabel: 'Select image',
+        aspectRatioLabel: 'Aspect ratio',
+        rotateRightLabel: 'Rotate right',
+        cropParamsLabel: 'Cropper params',
+        proportionalLabel: 'Proportional',
+        flipVerticalLabel: 'Flip vertical',
+        cropAreaYCoordLabel: 'Y coordinate',
+        cropAreaXCoordLabel: 'X coordinate',
+        flipHorizontalLabel: 'Flip horizontal',
+        dropareaLabel: 'Select or drop image...',
+      }
     }
   },
 
   computed: {
+    opts() {
+      return Object.assign(this.defaultProps, this.options)
+    },
     canvasHeight() {
       if (this.imageRatio <= this.cropperRatio) {
         return this.maxCropAreaHeight
@@ -1226,6 +1242,9 @@ export default {
     }
   },
   watch: {
+    options(val) {
+      console.log(val)
+    },
     'opts.cropArea.width'() {
       this.drawCanvas()
     },
