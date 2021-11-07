@@ -33,8 +33,9 @@ Most basic example. This is going to insert the cropper with default options:
     </div>
 </template>
 <script>
-    import XCropper from "x-cropper";
-
+    import XCropper from 'x-cropper'
+    import 'x-cropper/dist/XCropper.css'
+    
     export default {
         components: {XCropper}
     }
@@ -138,6 +139,7 @@ Example with all the options and events:
 </template>
 <script>
 import XCropper from 'x-cropper'
+import 'x-cropper/dist/XCropper.css'
 
 export default {
   name: 'XCropper',
