@@ -22,6 +22,12 @@ npm install x-cropper
 yarn add x-cropper
 ```
 
+
+### UI
+
+![x-cropper](assets/x-cropper-2.png)
+
+
 ## Usage
 
 Most basic example. This is going to insert the cropper with default options:
@@ -168,7 +174,3 @@ export default {
 }
 </script> 
 ```
-
-### UI
-
-![x-cropper](assets/x-cropper-2.png)
