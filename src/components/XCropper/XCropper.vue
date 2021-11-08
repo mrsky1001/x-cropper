@@ -1366,6 +1366,7 @@ export default {
         .crop-area {
             display: flex;
             flex-direction: row;
+            flex-wrap: wrap;
 
             .cropper-preview-card {
                 display: flex;
