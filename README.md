@@ -1,4 +1,5 @@
 ![x-cropper](assets/x-cropper-logo-64.png)
+
 # XCropper
 
 An image cropper and uploader component for VueJS with Vuetify
@@ -26,19 +27,20 @@ yarn add x-cropper
 Most basic example. This is going to insert the cropper with default options:
 
 ```vue
+
 <template>
-    <div>
-        <h1>XCropper - crop all!</h1>
-        <x-cropper></x-cropper>
-    </div>
+  <div>
+    <h1>XCropper - crop all!</h1>
+    <x-cropper></x-cropper>
+  </div>
 </template>
 <script>
-    import XCropper from 'x-cropper'
-    import 'x-cropper/dist/XCropper.css'
-    
-    export default {
-        components: {XCropper}
-    }
+import XCropper from 'x-cropper'
+import 'x-cropper/dist/XCropper.css'
+
+export default {
+  components: {XCropper}
+}
 </script>
 ```
 
@@ -64,76 +66,95 @@ Example with all the options and events:
     
             isUploadTo: false,
             isPreviewOnDrag: true,
-            isShowPreview: true,
-            isShowToolbar: true,
-            isShowFormParams: true,
             isCloseOnSave: true,
     
-            cropArea: {
-                minWidth: 8,
-                minHeight: 8,
+            // show flags
+            isShowPreview: true,
+            isShowToolbar: true,
+            isShowSaveBtn: true,
+            isShowClearBtn: true,
+            isShowCircleChk: true,
+            isShowQualityFld: true,
+            isShowFormParams: true,
+            isShowFullAreaBtn: true,
+            isShowFlipVertBtn: true,
+            isShowFlipHorizBtn: true,
+            isShowSelectImgBtn: true,
+            isShowExpansionPnl: true,
+            isShowRotateLeftBtn: true,
+            isShowAspectRatioFld: true,
+            isShowRotateRightBtn: true,
+            isShowProportionalChk: true,
     
-                // user changeable fields
-                width: 0,
-                height: 0,
-                x: 20,
-                y: 20,
+            cropArea: {
+              minWidth: 8,
+              minHeight: 8,
+    
+              // user changeable fields
+              width: 0,
+              height: 0,
+              x: 20,
+              y: 20,
             },
     
             // user changeable checks
-            isProportional: true,
-            isCircle: false,
+            isCircle: true,
+            isProportional: false,
+    
     
             // user changeable fields
-            aspectRatio: undefined,
             rotation: 0,
+            quality: 0.85,
+            handleSize: 10,
+            aspectRatio: 1,
             maxCropAreaHeight: 0,
             frameLineDash: [5, 3],
-            handleSize: 10,
-            quality: 0.65,
+            
     
             // colors
-            frameStrokeColor: 'rgba(255, 255, 255, 0.8)',
+            overlayFill: 'rgba(0, 0, 0, 0.5)',
             handleFillColor: 'rgba(255, 255, 255, 0.2)',
+            frameStrokeColor: 'rgba(255, 255, 255, 0.8)',
+            handleStrokeColor: 'rgba(255, 255, 255, 0.8)',
             handleHoverFillColor: 'rgba(255, 255, 255, 0.4)',
             handleHoverStrokeColor: 'rgba(255, 255, 255, 1)',
-            handleStrokeColor: 'rgba(255, 255, 255, 0.8)',
-            overlayFill: 'rgba(0, 0, 0, 0.5)',
     
-            // classes
+            // style classes
             cropperClasses: '',
             toolbarClasses: '',
             cropAreaClasses: '',
             formParamsClasses: '',
     
             // labels
-            dropareaLabel: 'Select or drop image...',
-            selectBtnLabel: 'Select image',
-            rotateLeftLabel: 'Rotate left',
-            rotateRightLabel: 'Rotate right',
-            flipHorizontalLabel: 'Flip horizontal',
-            flipVerticalLabel: 'Flip vertical',
+    
             clearLabel: 'Clear',
-            saveLabel: 'Save image',
             circleLabel: 'Circle',
-            proportionalLabel: 'Proportional',
-            aspectRatioLabel: 'Aspect ratio',
             previewLabel: 'Preview',
-            cropAreaLabel: 'Cropper area',
-            cropParamsLabel: 'Cropper params',
+            qualityLabel: 'Quality',
+            saveLabel: 'Save image',
             cropAreaWidthLabel: 'Width',
             cropAreaHeightLabel: 'Height',
-            cropAreaXCoordLabel: 'X coordinate',
+            cropAreaLabel: 'Cropper area',
+            rotateLeftLabel: 'Rotate left',
+            fullCropAreaLabel: 'Full area',
+            selectBtnLabel: 'Select image',
+            aspectRatioLabel: 'Aspect ratio',
+            rotateRightLabel: 'Rotate right',
+            cropParamsLabel: 'Cropper params',
+            proportionalLabel: 'Proportional',
+            flipVerticalLabel: 'Flip vertical',
             cropAreaYCoordLabel: 'Y coordinate',
-            fillCropAreaLabel: 'Full area',
-            qualityLabel: 'Quality'
-    }"
-    @cropper-error="someAction(errorMessage)"
-    @cropper-file-selected="someAction(file)"
-    @cropper-preview="someAction(imageSource)"
-    @cropper-saved="someAction(cropData)"
-    @cropper-cancelled="someAction()"
-    @cropper-uploaded="someAction(serverResponse)"
+            cropAreaXCoordLabel: 'X coordinate',
+            flipHorizontalLabel: 'Flip horizontal',
+            dropareaLabel: 'Select or drop image...',
+        }"
+        
+        @cropper-error="someAction(errorMessage)"
+        @cropper-file-selected="someAction(file)"
+        @cropper-preview="someAction(imageSource)"
+        @cropper-saved="someAction(cropData)"
+        @cropper-cancelled="someAction()"
+        @cropper-uploaded="someAction(serverResponse)"
     ></x-cropper>
   </div>
 </template>
