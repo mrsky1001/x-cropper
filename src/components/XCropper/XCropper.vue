@@ -1486,9 +1486,12 @@ export default {
                 .cropper-preview-card,
                 .cropper-main-card {
                     margin: 0 !important;
+                    width: inherit !important;
                 }
 
                 width: 100% !important;
+                justify-content: space-evenly;
+                align-content: center;
             }
         }
 
@@ -1500,13 +1503,13 @@ export default {
     }
 }
 
-@media screen and (max-width: 1300px) {
-    .cropper {
-        .cropper-card {
-            .crop-area {
-                flex-direction: column;
-            }
-        }
-    }
-}
+//@media screen and (max-width: 1300px) {
+//    .cropper {
+//        .cropper-card {
+//            .crop-area {
+//                flex-direction: column;
+//            }
+//        }
+//    }
+//}
 </style>
