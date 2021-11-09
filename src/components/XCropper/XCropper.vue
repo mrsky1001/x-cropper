@@ -219,7 +219,7 @@
                     </div>
                 </v-card>
                 <div :class="'crop-area ' + opts.cropAreaClasses">
-                    <v-card class="cropper-preview-card">
+                    <v-card class="cropper-main-card">
                         <v-card-title style="place-content: center">
                             {{ opts.cropAreaLabel }}
                         </v-card-title>
@@ -1368,7 +1368,8 @@ export default {
             flex-direction: row;
             flex-wrap: wrap;
 
-            .cropper-preview-card {
+            .cropper-preview-card,
+            .cropper-main-card {
                 display: flex;
                 flex-direction: column;
                 flex-wrap: wrap;
@@ -1463,7 +1464,8 @@ export default {
     .cropper {
         .cropper-card {
             .crop-area {
-                .cropper-preview-card {
+                .cropper-preview-card,
+                .cropper-main-card {
                     margin: 0 !important;
                 }
 
