@@ -157,7 +157,7 @@
         </v-navigation-drawer>
 
         <v-app-bar app>
-            <v-toolbar-title @click="drawer = true"> <v-icon>mdi-crop</v-icon> X-Cropper </v-toolbar-title>
+            <v-toolbar-title @click="drawer = true"> <v-icon>mdi-chevron-left </v-icon> X-Cropper </v-toolbar-title>
             <v-spacer />
             <v-btn icon color="primary" href="https://www.npmjs.com/package/x-cropper">
                 <v-icon large> mdi-npm </v-icon>
