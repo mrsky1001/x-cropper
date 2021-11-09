@@ -499,12 +499,17 @@ export default {
     },
     maxCropAreaWidth() {
       const mw = this.fullWidthUI
+      let res = Math.floor(0.35 * mw)
+
+      const calculatedHeight = Math.floor(res / this.imageRatio)
 
       if (this.fullWidthUI <= this.opts.layoutBreakpoint || !this.opts.isShowPreview) {
-        return Math.floor(0.9 * mw)
+        res = Math.floor(0.9 * mw)
       }
 
-      return Math.floor(0.35 * mw)
+      res = res / (calculatedHeight / this.opts.maxCropperHeight)
+
+      return  res
     },
     cx() {
       const box = this.canvas.getBoundingClientRect()
@@ -1259,9 +1264,6 @@ export default {
     }
   },
   watch: {
-    options(val) {
-      console.log(val)
-    },
     'opts.cropArea.width'() {
       this.drawCanvas()
     },
