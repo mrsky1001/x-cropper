@@ -141,6 +141,17 @@
                         label="isShowClearBtn"
                         v-model="options.isShowClearBtn"
                     />
+                    <v-text-field
+                        type="number"
+                        autofocus
+                        dense
+                        outlined
+                        hide-details
+                        style="margin: 10px 0 0 0"
+                        label="maxCropperHeight"
+                        v-model="options.maxCropperHeight"
+                    />
+                    <v-slider v-model="options.maxCropperHeight" hide-details :max="1000" />
                 </v-col>
             </v-row>
         </v-navigation-drawer>

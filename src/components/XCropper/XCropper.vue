@@ -719,10 +719,27 @@ export default {
       this.moveMouse()
     },
     doubleClickCropper() {
-      this.opts.cropArea.width = this.maxCropAreaWidth
-      this.opts.cropArea.height = this.maxCropAreaHeight
-      this.opts.cropArea.x = 0
-      this.opts.cropArea.y = 0
+      const [h, w] = [this.maxCropAreaHeight, this.maxCropAreaWidth]
+
+      if(this.opts.isCircle) {
+        if(w > h) {
+          this.opts.cropArea.height = h
+          this.opts.cropArea.width = h
+          this.opts.cropArea.y = 0
+          this.opts.cropArea.x = (w - h) / 2
+        }else{
+          this.opts.cropArea.height = w
+          this.opts.cropArea.width = w
+          this.opts.cropArea.x = 0
+          this.opts.cropArea.y = (h - w) / 2
+        }
+      }else{
+        this.setIsProportional(false)
+        this.opts.cropArea.height = h
+        this.opts.cropArea.width = w
+        this.opts.cropArea.y = 0
+        this.opts.cropArea.x = 0
+      }
     },
     cancelCrop() {
       const input = this.$refs.fileInput
