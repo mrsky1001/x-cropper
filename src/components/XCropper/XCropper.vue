@@ -636,7 +636,7 @@ export default {
       return canvas
     },
     resultWidth() {
-      const [ar, cw, ch] = [this.opts.aspectRatio, this.opts.croppedAreaWidth, this.opts.croppedAreaHeight]
+      const [ar, cw, ch] = [this.opts.aspectRatio, this.imageWidth, this.imageHeight]
       const imageFactor = Math.round((this.imageWidth / this.canvasWidth) * 1000) / 1000
       const ratio = ar ? ar : this.opts.cropArea.width / this.opts.cropArea.height
 
@@ -661,7 +661,7 @@ export default {
       return Math.round(ch * ratio)
     },
     resultHeight() {
-      const [ar, cw, ch] = [this.opts.aspectRatio, this.opts.croppedAreaWidth, this.opts.croppedAreaHeight]
+      const [ar, cw, ch] = [this.opts.aspectRatio, this.imageWidth, this.imageHeight]
       const imageFactor = Math.round((this.imageHeight / this.canvasHeight) * 1000) / 1000
       const ratio = ar ? ar : this.opts.cropArea.width / this.opts.cropArea.height
 
