@@ -98,14 +98,36 @@
                                     dense
                                     hide-details
                                     step="0.01"
+                                    aria-valumin="0.1"
                                     aria-valuemax="1"
                                     :label="opts.qualityLabel"
                                     v-model="opts.quality"
                                     @change="moveMouse()"
                                 />
+                            </v-col>
+                            <v-col>
+                                <v-text-field
+                                    type="number"
+                                    required
+                                    autofocus
+                                    outlined
+                                    dense
+                                    readonly
+                                    hide-details
+                                    :error="opts.sizeFileMb > 2"
+                                    step="0.01"
+                                    aria-valuemax="1"
+                                    :label="opts.sizeFileLabel"
+                                    v-model="opts.sizeFileMb"
+                                />
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col>
                                 <v-slider
                                     hide-details
                                     step="0.01"
+                                    :min="0.1"
                                     :max="1"
                                     v-model="opts.quality"
                                     @change="moveMouse()"
@@ -292,6 +314,7 @@ export default {
       isDragged: false,
       isLoading: false,
 
+      imageSize: 0,
       imageWidth: 0,
       imageHeight: 0,
       fullWidthUI: 500,
@@ -353,6 +376,7 @@ export default {
         // user changeable fields
         rotation: 0,
         quality: 0.85,
+        sizeFileMb: 2,
         handleSize: 10,
         aspectRatio: 1,
         maxCropAreaHeight: 0,
@@ -378,6 +402,7 @@ export default {
         circleLabel: 'Circle',
         previewLabel: 'Preview',
         qualityLabel: 'Quality',
+        sizeFileLabel: 'Size File (mb)',
         saveLabel: 'Save image',
         cropAreaWidthLabel: 'Width',
         cropAreaHeightLabel: 'Height',
@@ -989,6 +1014,8 @@ export default {
       return bytes.toFixed(1) + ' ' + units[u]
     },
     moveMouse(evt) {
+
+      this.opts.sizeFileMb = this.imageSize * this.opts.quality
       let dx = 0
       let dy = 0
 
@@ -1008,6 +1035,7 @@ export default {
       }
 
       this.drawCanvas()
+
     },
     rotate(delta) {
       const canvasSize = [this.canvasWidth, this.canvasHeight]
@@ -1248,6 +1276,8 @@ export default {
         return
       }
 
+      this.imageSize = file.size / 1024 / 1024
+
       if (this.opts.maxFileSize && file.size > this.opts.maxFileSize) {
         const fileSize = this.humanFileSize(file.size)
 
@@ -1255,6 +1285,7 @@ export default {
             'cropper-error',
             'File too large (' + fileSize + ')! Max file size is ' + this.humanFileSize(this.opts.maxFileSize)
         )
+
 
         return
       }
@@ -1281,11 +1312,24 @@ export default {
         const img = new Image()
 
         img.onload = () => {
+
           this.imageWidth = img.width
           this.imageHeight = img.height
           this.image = img
           this.loadingImage = false
           this.$nextTick(this.startCanvas)
+
+          // var canvas = document.createElement('canvas')
+          // canvas.width = img.width
+          // canvas.height = img.height
+          //
+          // var ctx = canvas.getContext('2d')
+          // ctx.drawImage(img, 0, 0)
+          //
+          // var offset = "data:image/png;base64,".length;
+
+
+          // console.log( (canvas.toDataURL("image/png").length - offset) / 1024 / 1024)
         }
 
         img.onerror = (error) => {
