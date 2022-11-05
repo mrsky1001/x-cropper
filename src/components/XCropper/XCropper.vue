@@ -11,6 +11,7 @@
                 <v-icon class="mr-1"> mdi-image-plus</v-icon>
                 {{ opts.selectBtnLabel }}
             </v-btn>
+            <div id="cropper-error"></div>
         </div>
         <div v-if="file" class="cropper-card">
             <v-toolbar :class="'cropper-toolbar ' + opts.toolbarClasses">
@@ -325,7 +326,7 @@ export default {
       },
 
       defaultProps: {     // system
-        inputMimeTypes: ['image/jpeg', 'image/png', 'image/gif'],
+        inputMimeTypes: ['image/jpeg', 'image/png', 'image/gif', 'image/webp'],
         resultMimeType: 'image/jpeg',
         maxFileSize: 8000000, // 8MB
         layoutBreakpoint: 850,
@@ -1082,6 +1083,8 @@ export default {
     selectFile(evt) {
       const file = evt.currentTarget.files[0]
 
+      console.log(evt)
+      console.log(file)
       if (file) {
         this.useFile(file)
       }
@@ -1271,14 +1274,17 @@ export default {
       this.opts.cropArea.height = nh
     },
     useFile(file) {
+      console.log(file)
       if (this.opts.inputMimeTypes.indexOf(file.type) === -1) {
         this.$emit('cropper-error', 'Wrong file type: ' + file.type)
         return
       }
+      console.log('useFile')
 
       this.imageSize = file.size / 1024 / 1024
 
       if (this.opts.maxFileSize && file.size > this.opts.maxFileSize) {
+        console.log('useFile')
         const fileSize = this.humanFileSize(file.size)
 
         this.$emit(
@@ -1290,6 +1296,7 @@ export default {
         return
       }
 
+      console.log(file)
       this.file = file
       this.$emit('cropper-file-selected', file)
     }
@@ -1307,10 +1314,13 @@ export default {
       this.flipv = false
 
       const reader = new FileReader()
+      console.log(nf)
 
       reader.onload = (evt) => {
         const img = new Image()
 
+        console.log(evt)
+        console.log(img)
         img.onload = () => {
 
           this.imageWidth = img.width
@@ -1339,6 +1349,7 @@ export default {
           this.image = false
           this.file = false
           this.$emit('cropper-error', 'Image reading error' + error)
+          console.log(error)
         }
 
         const input = this.$refs.fileInput
@@ -1350,6 +1361,7 @@ export default {
       reader.onerror = (error) => {
         this.file = false
         this.$emit('cropper-error', 'File reading error' + error)
+        console.log(error)
       }
 
       if (nf) {

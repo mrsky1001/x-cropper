@@ -194,7 +194,7 @@ export default {
         logo: logo,
         options: {
             // system
-            inputMimeTypes: ['image/jpeg', 'image/png', 'image/gif'],
+            inputMimeTypes: ['image/jpeg', 'image/png', 'image/gif', 'image/webp'],
             resultMimeType: 'image/jpeg',
             maxFileSize: 8000000, // 8MB
             layoutBreakpoint: 850,
